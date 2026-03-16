@@ -8,12 +8,15 @@ export default function ProvinceTownSelector () {
 
     const data = arbol as AutonomousCommunity[]
     const provinces = data.flatMap((community) => community.provinces)
-    // console.log(data)
-    // console.log(provinces)
+    const currentProvince = provinces.find(
+        (province) => province.label === selectedProvince
+    )
 
     function handleProvinceChange(event: React.ChangeEvent<HTMLSelectElement>) {
         setSelectedProvince(event.target.value)
     }
+
+    console.log(currentProvince)
     return (
         <section>
             <label htmlFor="province">Provincia</label>
