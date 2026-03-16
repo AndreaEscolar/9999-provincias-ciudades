@@ -41,6 +41,9 @@ export default function ProvinceTownSelector () {
             province: selectedProvince,
             town: selectedTown
         })
+
+        setSelectedProvince("")
+        setSelectedTown("")
     } 
     
     return (
