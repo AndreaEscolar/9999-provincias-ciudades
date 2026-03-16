@@ -28,36 +28,43 @@ export default function ProvinceTownSelector () {
     function handleTownChange(event: React.ChangeEvent<HTMLSelectElement>) {
         setSelectedTown(event.target.value)
     }
+
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+    } 
     
     return (
         <section>
-            <label htmlFor="province">Provincia</label>
-            <select id="province" value={selectedProvince} onChange={handleProvinceChange}>
-                <option value=""> Escoge una provincia</option>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="province">Provincia</label>
+                <select id="province" value={selectedProvince} onChange={handleProvinceChange}>
+                    <option value=""> Escoge una provincia</option>
 
-                {provinces.map((province) => (
-                    <option key={province.code} value={province.label}>
-                        {province.label}
-                    </option>
-                ))}
-            </select>
+                    {provinces.map((province) => (
+                        <option key={province.code} value={province.label}>
+                            {province.label}
+                        </option>
+                    ))}
+                </select>
 
-            <label htmlFor="town">Ciudad</label>
-            <select 
-                key={selectedProvince}
-                id="town" 
-                value={selectedTown} 
-                onChange={handleTownChange} 
-                disabled={!selectedProvince}
-            >
-                <option value=""> Escoge una ciudad</option>
+                <label htmlFor="town">Ciudad</label>
+                <select 
+                    key={selectedProvince}
+                    id="town" 
+                    value={selectedTown} 
+                    onChange={handleTownChange} 
+                    disabled={!selectedProvince}
+                >
+                    <option value=""> Escoge una ciudad</option>
 
-                {availableTowns.map((town) => (
-                    <option key={town.code} value={town.label}>
-                        {town.label}
-                    </option>
-                ))}
-            </select>
+                    {availableTowns.map((town) => (
+                        <option key={town.code} value={town.label}>
+                            {town.label}
+                        </option>
+                    ))}
+                </select>
+                <button type="submit">Enviar</button>
+            </form>
         </section>
     )
 } 
